@@ -8,6 +8,16 @@ namespace CheatsExaple
         public class Player
         {
             public string Name;
+            public int Progress;
+            public void DoSomething()
+            {
+                Console.WriteLine("something done...");
+            }
+
+            public override string ToString()
+            {
+                return $"(Name: {Name}; Progress: {Progress})";
+            }
         }
 
         static bool quit = false;
@@ -23,7 +33,10 @@ namespace CheatsExaple
             {
                 Console.Write(">>");
                 string message = Console.ReadLine();
-                cheats.TryRunCheat(message, p);
+                bool result = cheats.TryRunCheat(message, p);
+                if (!result)
+                    Console.WriteLine("for help write '/help'");
+
             }
         }
 
@@ -31,10 +44,11 @@ namespace CheatsExaple
         {
             Cheats<Player> cheats = new Cheats<Player>();
             cheats.RegisterCheat("help", (p) => Console.WriteLine(cheats.GetCheatDescription()), "Print all cheat descriptions");
-            cheats.RegisterCheat("getname", (p) => Console.WriteLine("Name: " + p.Name), "Print my name");
-            cheats.RegisterCheat<string>("setname", (p, name) => p.Name = name, "Set my name");
+            cheats.RegisterCheat("info", (p) => Console.WriteLine("PersonInfo: " + p), "Print my info");
+            cheats.RegisterCheat("dosomething", (p) => p.DoSomething(), "run Player.DoSomething()");
+            cheats.RegisterCheat<string>("setname", (p, name) => p.Name = name, "Set name");
+            cheats.RegisterCheat<int>("setprogress", (p, progress) => p.Progress = progress, "Set progress");
             cheats.RegisterCheat("quit", (p) => quit = true, "Quit");
-            cheats.RegisterCheat("q", (p) => quit = true, "Quit");
 
             return cheats;
         }
