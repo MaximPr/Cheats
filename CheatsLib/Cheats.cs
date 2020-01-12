@@ -31,9 +31,6 @@ namespace CheatsLib
             if (m.Success)
             {
                 string CheatmMessage = m.Groups["message"].Value;
-                var m2 = argsParser.Match(CheatmMessage);
-                var name = m2.Groups["name"].Value;
-                name = name.ToLower();
                 return RunCheat(CheatmMessage, person);
             }
             return false;

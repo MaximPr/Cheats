@@ -43,7 +43,7 @@ namespace CheatsExaple
         static void RegisterCheats(Cheats<Player> cheats)
         {
             cheats.RegisterCheat("help", (p) => Console.WriteLine(cheats.GetCheatDescription()), "Print all cheat descriptions");
-            cheats.RegisterCheat("info", (p) => Console.WriteLine("PersonInfo: " + p), "Print my info");
+            cheats.RegisterCheat("info", (p) => Console.WriteLine("PersonInfo: " + p.ToString()), "Print my info");
             cheats.RegisterCheat("dosomething", (p) => p.DoSomething(), "run Player.DoSomething()");
             cheats.RegisterCheat<string>("setname", (p, name) => p.Name = name, "Set name");
             cheats.RegisterCheat<int>("setprogress", (p, progress) => p.Progress = progress, "Set progress");
