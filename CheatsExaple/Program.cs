@@ -23,11 +23,12 @@ namespace CheatsExaple
         static bool quit = false;
         static void Main(string[] args)
         {
-            var cheats = InitCheats();
+            Cheats<Player> cheats = new Cheats<Player>();
+            RegisterCheats(cheats);
 
             Player p = new Player { Name = "Alex" };
 
-            Console.WriteLine("Enter cheat!");
+            Console.WriteLine("Enter cheat! For help write '/help'");
 
             while (!quit)
             {
@@ -35,22 +36,18 @@ namespace CheatsExaple
                 string message = Console.ReadLine();
                 bool result = cheats.TryRunCheat(message, p);
                 if (!result)
-                    Console.WriteLine("for help write '/help'");
-
+                    Console.WriteLine("format /[cheat_name] or /[cheat_name] [args]");
             }
         }
 
-        static Cheats<Player> InitCheats()
+        static void RegisterCheats(Cheats<Player> cheats)
         {
-            Cheats<Player> cheats = new Cheats<Player>();
             cheats.RegisterCheat("help", (p) => Console.WriteLine(cheats.GetCheatDescription()), "Print all cheat descriptions");
             cheats.RegisterCheat("info", (p) => Console.WriteLine("PersonInfo: " + p), "Print my info");
             cheats.RegisterCheat("dosomething", (p) => p.DoSomething(), "run Player.DoSomething()");
             cheats.RegisterCheat<string>("setname", (p, name) => p.Name = name, "Set name");
             cheats.RegisterCheat<int>("setprogress", (p, progress) => p.Progress = progress, "Set progress");
             cheats.RegisterCheat("quit", (p) => quit = true, "Quit");
-
-            return cheats;
         }
     }
 }

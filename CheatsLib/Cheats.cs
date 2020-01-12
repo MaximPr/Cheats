@@ -88,42 +88,42 @@ namespace CheatsLib
             Register(name, 1, (p, x) => f(p, x[0]), "/" + name + " string", descr);
         }
 
-        public void RegisterCheat(string name, Action<object, int> f, string descr = "")
+        public void RegisterCheat(string name, Action<T, int> f, string descr = "")
         {
             Register(name, 1, (p, x) => f(p, int.Parse(x[0])), "/" + name + " int", descr);
         }
 
-        public void RegisterCheat(string name, Action<object, string, bool> f, string descr = "")
+        public void RegisterCheat(string name, Action<T, string, bool> f, string descr = "")
         {
             Register(name, 2, (p, x) => f(p, x[0], bool.Parse(x[1])), "/" + name + " string bool", descr);
         }
 
-        public void RegisterCheat(string name, Action<object, int, int> f, string descr = "")
+        public void RegisterCheat(string name, Action<T, int, int> f, string descr = "")
         {
             Register(name, 2, (p, x) => f(p, int.Parse(x[0]), int.Parse(x[1])), "/" + name + " int int", descr);
         }
 
-        public void RegisterCheat(string name, Action<object, int, string> f, string descr = "")
+        public void RegisterCheat(string name, Action<T, int, string> f, string descr = "")
         {
             Register(name, 2, (p, x) => f(p, int.Parse(x[0]), x[1]), "/" + name + " int string", descr);
         }
 
-        public void RegisterCheat(string name, Action<object, string, int> f, string descr = "")
+        public void RegisterCheat(string name, Action<T, string, int> f, string descr = "")
         {
             Register(name, 2, (p, x) => f(p, x[0], int.Parse(x[1])), "/" + name + " string int", descr);
         }
 
-        public void RegisterCheat(string name, Action<object, string, string> f, string descr = "")
+        public void RegisterCheat(string name, Action<T, string, string> f, string descr = "")
         {
             Register(name, 2, (p, x) => f(p, x[0], x[1]), "/" + name + " string string", descr);
         }
 
-        public void RegisterCheat(string name, Action<object, string, string, string> f, string descr = "")
+        public void RegisterCheat(string name, Action<T, string, string, string> f, string descr = "")
         {
             Register(name, 3, (p, x) => f(p, x[0], x[1], x[2]), "/" + name + " string string string", descr);
         }
 
-        public void RegisterCheat(string name, Action<object, int, int, int> f, string descr = "")
+        public void RegisterCheat(string name, Action<T, int, int, int> f, string descr = "")
         {
             Register(name, 3, (p, x) => f(p, int.Parse(x[0]), int.Parse(x[1]), int.Parse(x[2])), "/" + name + " int int int", descr);
         }
