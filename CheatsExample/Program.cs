@@ -1,7 +1,7 @@
 ﻿using CheatsLib;
 using System;
 
-namespace CheatsExaple
+namespace CheatsExample
 {
     class Program
     {
